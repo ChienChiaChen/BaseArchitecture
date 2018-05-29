@@ -1,8 +1,11 @@
 package com.chiachen.myarchitecture.ui.splash;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.chiachen.myarchitecture.MainActivity;
+import com.chiachen.myarchitecture.R;
 import com.chiachen.myarchitecture.base.BaesActivity;
 
 import javax.inject.Inject;
@@ -17,6 +20,7 @@ public class SplashActivity extends BaesActivity implements SplashMvpView {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
         getActivityComponent().inject(this);
         setUnBinder(ButterKnife.bind(this));
         mPresenter.onAttach(this);
@@ -31,5 +35,8 @@ public class SplashActivity extends BaesActivity implements SplashMvpView {
 
     @Override
     public void openMainActivity() {
+        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.fade_out, R.anim.fade_in);
     }
 }

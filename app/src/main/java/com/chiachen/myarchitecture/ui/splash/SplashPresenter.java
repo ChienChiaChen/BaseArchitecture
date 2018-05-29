@@ -1,7 +1,5 @@
 package com.chiachen.myarchitecture.ui.splash;
 
-import android.util.Log;
-
 import com.chiachen.myarchitecture.base.BasePresenterImpl;
 import com.chiachen.myarchitecture.data.DataManager;
 import com.chiachen.myarchitecture.data.network.ApiCallback;
@@ -34,19 +32,17 @@ public class SplashPresenter<V extends SplashMvpView> extends BasePresenterImpl<
                     @Override
                     public void onSuccess(Integer integer) {
                         getMvpView().onError(String.valueOf(integer));
-                        Log.d("JASON_CHIEN", "\nonSuccess" + integer);
                     }
 
                     @Override
                     public void onFailure(String msg) {
                         getMvpView().onError(msg);
-                        Log.d("JASON_CHIEN", "\nonFailure");
                     }
 
                     @Override
                     public void onFinish() {
                         getMvpView().hideLoading();
-                        Log.d("JASON_CHIEN", "\nonFinish");
+                        getMvpView().openMainActivity();
                     }
                 }
         );
