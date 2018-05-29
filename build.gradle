@@ -37,4 +37,5 @@ ext {
     supportLibraryVersion = '26.1.0'
     gsonVersion = '2.8.2'
     retrofitVersion = '2.3.0'
+    rx2FastAndroidNetworking = '1.0.1'
 }
