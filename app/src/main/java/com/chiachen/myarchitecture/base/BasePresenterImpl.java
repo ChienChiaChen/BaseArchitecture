@@ -18,7 +18,9 @@ import java.lang.ref.WeakReference;
 import javax.inject.Inject;
 import javax.net.ssl.HttpsURLConnection;
 
+import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableObserver;
 
 public class BasePresenterImpl <V extends BaseView> implements BasePresenter<V>{
 
@@ -31,9 +33,11 @@ public class BasePresenterImpl <V extends BaseView> implements BasePresenter<V>{
     private WeakReference<V> mView;
 
     @Inject
-    public BasePresenterImpl(SchedulerProvider schedulerProvider,
-                             CompositeDisposable compositeDisposable,
-                             DataManager dataManager) {
+    public BasePresenterImpl(
+            SchedulerProvider schedulerProvider,
+            CompositeDisposable compositeDisposable,
+            DataManager dataManager) {
+
         mSchedulerProvider = schedulerProvider;
         mCompositeDisposable = compositeDisposable;
         mDataManager = dataManager;
@@ -47,6 +51,7 @@ public class BasePresenterImpl <V extends BaseView> implements BasePresenter<V>{
     @Override
     public void onDetach() {
         this.mView = null;
+        mCompositeDisposable.dispose();
     }
 
     public SchedulerProvider getSchedulerProvider() {
@@ -67,7 +72,6 @@ public class BasePresenterImpl <V extends BaseView> implements BasePresenter<V>{
 
     @Override
     public void handleApiError(ANError error) {
-
         if (error == null || error.getErrorBody() == null) {
             getMvpView().onError(R.string.error_api_default);
             return;
@@ -108,6 +112,13 @@ public class BasePresenterImpl <V extends BaseView> implements BasePresenter<V>{
         }
     }
 
+    public void addSubscription(Observable observable, DisposableObserver observer) {
+        mCompositeDisposable.add(observer);
+        observable.subscribeOn(mSchedulerProvider.io())
+                .observeOn(mSchedulerProvider.ui())
+                .subscribeWith(observer);
+    }
+
     public boolean isViewAttached() {
         return null != mView && null != mView.get();
     }
@@ -120,5 +131,6 @@ public class BasePresenterImpl <V extends BaseView> implements BasePresenter<V>{
         public MVPViewNotAttachedException() {
             super("Plz invoke Presenter.onAttach(view) before requesting data to the presenter");
         }
+
     }
 }
