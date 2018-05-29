@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MyArchitecture</string>
+
+    <string name="error_api_retry">Please retry!</string>
+    <string name="error_api_default">Something wrong happened!</string>
+    <string name="error_some">Some Error Occurred!</string>
+    <string name="error_connection">Internet connection lost!</string>
+
 </resources>
