@@ -9,5 +9,4 @@ import com.chiachen.myarchitecture.data.prefs.PreferencesHelper;
  */
 
 public interface DataManager extends DbHelper, PreferencesHelper, ApiHelper {
-
 }
