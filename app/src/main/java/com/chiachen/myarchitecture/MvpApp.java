@@ -6,6 +6,7 @@ import com.chiachen.myarchitecture.data.DataManager;
 import com.chiachen.myarchitecture.di.component.ApplicationComponent;
 import com.chiachen.myarchitecture.di.component.DaggerApplicationComponent;
 import com.chiachen.myarchitecture.di.module.ApplicationModule;
+import com.facebook.stetho.Stetho;
 
 import javax.inject.Inject;
 
@@ -38,6 +39,14 @@ public class MvpApp extends Application {
                         .build();
 
         mApplicationComponent.inject(this);
+        initStetho();
+    }
+
+    private void initStetho() {
+        Stetho.initialize(Stetho.newInitializerBuilder(this)
+                .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                .build());
     }
 
 }

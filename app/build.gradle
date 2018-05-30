@@ -58,4 +58,8 @@ dependencies {
     // Room DB
     implementation "android.arch.persistence.room:runtime:${rootProject.roomVersion}"
     annotationProcessor "android.arch.persistence.room:compiler:${rootProject.roomVersion}"
+
+    // Debug ->stetho
+    implementation "com.facebook.stetho:stetho:${rootProject.stethoVersion}"
+    implementation "com.facebook.stetho:stetho-okhttp3:${rootProject.stethoOkhttp3Version}"
 }

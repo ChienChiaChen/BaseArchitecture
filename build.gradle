@@ -39,4 +39,6 @@ ext {
     retrofitVersion = '2.3.0'
     rx2FastAndroidNetworking = '1.0.1'
     roomVersion = '1.0.0'
+    stethoVersion = '1.5.0'
+    stethoOkhttp3Version = '1.4.2'
 }
