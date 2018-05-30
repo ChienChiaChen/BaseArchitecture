@@ -6,4 +6,25 @@
     <string name="error_some">Some Error Occurred!</string>
     <string name="error_connection">Internet connection lost!</string>
 
+    <!--Drawer-->
+    <string name="open_drawer">Drawer Open</string>
+    <string name="close_drawer">Drawer Close</string>
+    <!---->
+
+    <!--Toolbar menus-->
+    <string name="clear">Clear</string>
+    <string name="cut">Cut</string>
+    <string name="copy">Copy</string>
+    <string name="paste">Paste</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+    <!---->
+
+    <!--Drawer Menus-->
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
+    <string name="feed">My Feed</string>
+    <string name="rate_us">Rate Us</string>
+    <!---->
+
 </resources>
