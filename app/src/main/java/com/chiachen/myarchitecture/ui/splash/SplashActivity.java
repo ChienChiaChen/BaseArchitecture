@@ -38,5 +38,6 @@ public class SplashActivity extends BaesActivity implements SplashMvpView {
         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.fade_out, R.anim.fade_in);
+        finish();
     }
 }
