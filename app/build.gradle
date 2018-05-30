@@ -62,4 +62,7 @@ dependencies {
     // Debug ->stetho
     implementation "com.facebook.stetho:stetho:${rootProject.stethoVersion}"
     implementation "com.facebook.stetho:stetho-okhttp3:${rootProject.stethoOkhttp3Version}"
+
+    // fake data
+    implementation "com.github.blocoio:faker:${rootProject.fakerVersion}"
 }
