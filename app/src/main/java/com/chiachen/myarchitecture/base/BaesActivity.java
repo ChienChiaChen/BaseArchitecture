@@ -89,11 +89,13 @@ public class BaesActivity extends AppCompatActivity implements BaseView {
         return false;
     }
 
-    private void showSnackBar(String message) {
-        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT);
+    @Override
+    public void showSnackBar(String msg) {
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), msg, Snackbar.LENGTH_SHORT);
         View sbView = snackbar.getView();
         TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(ContextCompat.getColor(this, android.R.color.white));
+        snackbar.setDuration(Snackbar.LENGTH_SHORT);
         snackbar.show();
     }
 

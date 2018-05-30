@@ -13,5 +13,7 @@ public interface BaseView {
     void showMsg(@StringRes int resId);
     void showMsg(String msg);
 
+    void showSnackBar(String msg);
+
     boolean isNetworkedConnected();
 }
