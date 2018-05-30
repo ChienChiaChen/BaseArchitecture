@@ -10,13 +10,16 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
-import com.chiachen.myarchitecture.base.BaesActivity;
+import com.chiachen.myarchitecture.base.BaseActivity;
+import com.chiachen.myarchitecture.ui.custom.RoundedImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaesActivity {
+public class MainActivity extends BaseActivity {
 
     @BindView(R.id.drawer_view)
     DrawerLayout mDrawer;
@@ -46,6 +49,7 @@ public class MainActivity extends BaesActivity {
 
         setSupportActionBar(mToolbar);
         setActionBar();
+        setNavMenu();
     }
 
     @Override
@@ -90,11 +94,24 @@ public class MainActivity extends BaesActivity {
 
     private void setActionBar() {
         mDrawerToggle = new ActionBarDrawerToggle(
-                this
-                ,mDrawer,mToolbar,
+                this,
+                mDrawer,
+                mToolbar,
                 R.string.open_drawer,
                 R.string.close_drawer);
         mDrawer.addDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+    }
+
+
+    private TextView mNameTextView;
+    private TextView mEmailTextView;
+    private RoundedImageView mProfileImageView;
+
+    private void setNavMenu() {
+        View headerLayout = mNavigationView.getHeaderView(0);
+        mProfileImageView = (RoundedImageView) headerLayout.findViewById(R.id.iv_profile_pic);
+        mNameTextView = (TextView) headerLayout.findViewById(R.id.tv_name);
+        mEmailTextView = (TextView) headerLayout.findViewById(R.id.tv_email);
     }
 }

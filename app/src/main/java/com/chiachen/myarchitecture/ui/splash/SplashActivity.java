@@ -6,13 +6,13 @@ import android.support.annotation.Nullable;
 
 import com.chiachen.myarchitecture.MainActivity;
 import com.chiachen.myarchitecture.R;
-import com.chiachen.myarchitecture.base.BaesActivity;
+import com.chiachen.myarchitecture.base.BaseActivity;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
-public class SplashActivity extends BaesActivity implements SplashMvpView {
+public class SplashActivity extends BaseActivity implements SplashMvpView {
 
     @Inject
     SplashMvpPresenter<SplashMvpView> mPresenter;

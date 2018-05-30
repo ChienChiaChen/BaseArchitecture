@@ -21,7 +21,7 @@ import com.chiachen.myarchitecture.utils.CommonUtils;
 
 import butterknife.Unbinder;
 
-public class BaesActivity extends AppCompatActivity implements BaseView {
+public class BaseActivity extends AppCompatActivity implements BaseView {
     private ProgressDialog mProgressDialog;
 
     private ActivityComponent mActivityComponent;
