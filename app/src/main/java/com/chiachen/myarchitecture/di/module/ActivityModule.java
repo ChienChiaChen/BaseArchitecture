@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.chiachen.myarchitecture.di.ActivityContext;
 import com.chiachen.myarchitecture.di.PerActivity;
+import com.chiachen.myarchitecture.ui.feed.FeedPagerAdapter;
 import com.chiachen.myarchitecture.ui.main.MainMvpPresenter;
 import com.chiachen.myarchitecture.ui.main.MainMvpView;
 import com.chiachen.myarchitecture.ui.main.MainPresenter;
@@ -73,5 +74,10 @@ public class ActivityModule {
     @PerActivity
     MainMvpPresenter<MainMvpView> provideMainPresenter(MainPresenter<MainMvpView> presenter) {
         return presenter;
+    }
+
+    @Provides
+    FeedPagerAdapter provideFeedPagerAdapter(AppCompatActivity activity) {
+        return new FeedPagerAdapter(activity.getSupportFragmentManager());
     }
 }
