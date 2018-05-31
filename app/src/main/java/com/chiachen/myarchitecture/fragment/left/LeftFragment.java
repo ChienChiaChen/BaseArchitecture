@@ -16,7 +16,7 @@ import com.chiachen.myarchitecture.base.BaseFragment;
 
 public class LeftFragment extends BaseFragment {
 
-    public static final String TAG = "JASON_CHIEN";
+    public static final String TAG = "LeftFragment";
 
     public static LeftFragment newInstance() {
         return new LeftFragment();
