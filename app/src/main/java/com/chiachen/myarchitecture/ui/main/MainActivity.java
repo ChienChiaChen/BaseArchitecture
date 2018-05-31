@@ -18,6 +18,7 @@ import com.chiachen.myarchitecture.R;
 import com.chiachen.myarchitecture.base.BaseActivity;
 import com.chiachen.myarchitecture.fragment.FragmentPage1;
 import com.chiachen.myarchitecture.ui.custom.RoundedImageView;
+import com.chiachen.myarchitecture.ui.feed.FeedActivity;
 import com.chiachen.myarchitecture.utils.FragmentUtils;
 
 import javax.inject.Inject;
@@ -63,6 +64,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         getActivityComponent().inject(this);
         setUnBinder(ButterKnife.bind(this));
         mPresenter.onAttach(this);
+        initUI();
     }
 
     @Override
@@ -154,6 +156,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                         return true;
                     }
                     case R.id.nav_item_feed: {
+                        startActivity(FeedActivity.getStartIntent(MainActivity.this));
                         return true;
                     }
                     case R.id.nav_item_logout: {
