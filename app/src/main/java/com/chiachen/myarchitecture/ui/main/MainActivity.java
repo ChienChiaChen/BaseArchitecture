@@ -16,12 +16,19 @@ import android.widget.TextView;
 
 import com.chiachen.myarchitecture.R;
 import com.chiachen.myarchitecture.base.BaseActivity;
+import com.chiachen.myarchitecture.fragment.FragmentPage1;
 import com.chiachen.myarchitecture.ui.custom.RoundedImageView;
+import com.chiachen.myarchitecture.utils.FragmentUtils;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements MainMvpView {
+
+    @Inject
+    MainMvpPresenter<MainMvpView> mPresenter;
 
     @BindView(R.id.drawer_view)
     DrawerLayout mDrawer;
@@ -47,7 +54,9 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getActivityComponent().inject(this);
         setUnBinder(ButterKnife.bind(this));
+        mPresenter.onAttach(this);
 
         setSupportActionBar(mToolbar);
         setActionBar();
@@ -61,6 +70,12 @@ public class MainActivity extends BaseActivity {
             // If User attach fragment, plz lock the drawer.
             mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        mPresenter.onDetach();
+        super.onDestroy();
     }
 
     @Override
@@ -105,6 +120,10 @@ public class MainActivity extends BaseActivity {
         mDrawerToggle.syncState();
     }
 
+    @Override
+    public void showFragment() {
+        FragmentUtils.nextFragment(getSupportFragmentManager(), FragmentPage1.newInstance(), FragmentPage1.TAG, R.id.cl_root_view);
+    }
 
     private TextView mNameTextView;
     private TextView mEmailTextView;
@@ -123,7 +142,7 @@ public class MainActivity extends BaseActivity {
 
                 switch (item.getItemId()) {
                     case R.id.nav_item_about: {
-                        // mPresenter.onDrawerOptionAboutClick();
+                        mPresenter.onDrawerOptionAboutClick();
                         return true;
                     }
                     case R.id.nav_item_rate_us: {
@@ -139,5 +158,11 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void lockDrawer() {
+        if (null == mDrawer) return;
+        mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 }

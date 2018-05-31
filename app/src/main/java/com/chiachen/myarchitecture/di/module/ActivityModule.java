@@ -20,6 +20,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.chiachen.myarchitecture.di.ActivityContext;
 import com.chiachen.myarchitecture.di.PerActivity;
+import com.chiachen.myarchitecture.ui.main.MainMvpPresenter;
+import com.chiachen.myarchitecture.ui.main.MainMvpView;
+import com.chiachen.myarchitecture.ui.main.MainPresenter;
 import com.chiachen.myarchitecture.ui.splash.SplashMvpPresenter;
 import com.chiachen.myarchitecture.ui.splash.SplashMvpView;
 import com.chiachen.myarchitecture.ui.splash.SplashPresenter;
@@ -63,6 +66,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     SplashMvpPresenter<SplashMvpView> provideSplashPresenter(SplashPresenter<SplashMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    MainMvpPresenter<MainMvpView> provideMainPresenter(MainPresenter<MainMvpView> presenter) {
         return presenter;
     }
 }
