@@ -50,6 +50,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
         if (0 != getSupportFragmentManager().getBackStackEntryCount()) {
             getSupportFragmentManager().popBackStackImmediate();
+            if (0 == getSupportFragmentManager().getBackStackEntryCount()) unlockDrawer();
         } else {
             super.onBackPressed();
         }
@@ -71,10 +72,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     protected void onResume() {
         super.onResume();
-        if (mDrawer != null) {
-            // If User attach fragment, plz lock the drawer.
-            mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-        }
     }
 
     @Override
@@ -169,5 +166,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void lockDrawer() {
         if (null == mDrawer) return;
         mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    }
+
+    private void unlockDrawer() {
+        if (null == mDrawer) return;
+        mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 }
