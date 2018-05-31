@@ -3,6 +3,7 @@ package com.chiachen.myarchitecture;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -113,5 +114,28 @@ public class MainActivity extends BaseActivity {
         mProfileImageView = (RoundedImageView) headerLayout.findViewById(R.id.iv_profile_pic);
         mNameTextView = (TextView) headerLayout.findViewById(R.id.tv_name);
         mEmailTextView = (TextView) headerLayout.findViewById(R.id.tv_email);
+
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                onBackPressed();
+
+                switch (item.getItemId()) {
+                    case R.id.nav_item_about: {
+                        return true;
+                    }
+                    case R.id.nav_item_rate_us: {
+                        return true;
+                    }
+                    case R.id.nav_item_feed: {
+                        return true;
+                    }
+                    case R.id.nav_item_logout: {
+                        return true;
+                    }
+                    default: return false;
+                }
+            }
+        });
     }
 }
