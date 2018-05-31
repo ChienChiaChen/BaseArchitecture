@@ -63,7 +63,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         getActivityComponent().inject(this);
         setUnBinder(ButterKnife.bind(this));
         mPresenter.onAttach(this);
+    }
 
+    @Override
+    protected void initUI() {
         setSupportActionBar(mToolbar);
         setActionBar();
         setNavMenu();

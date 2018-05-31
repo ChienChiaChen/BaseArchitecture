@@ -40,4 +40,9 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
         overridePendingTransition(R.anim.fade_out, R.anim.fade_in);
         finish();
     }
+
+    @Override
+    protected void initUI() {
+
+    }
 }
