@@ -43,11 +43,16 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void onBackPressed() {
-        if (mNavigationView.isShown()){
+        if (mNavigationView.isShown()) {
             mDrawer.closeDrawer(GravityCompat.START);
             return;
         }
-        super.onBackPressed();
+
+        if (0 != getSupportFragmentManager().getBackStackEntryCount()) {
+            getSupportFragmentManager().popBackStackImmediate();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
