@@ -1,4 +1,4 @@
-package com.chiachen.myarchitecture;
+package com.chiachen.myarchitecture.ui.main;
 
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.chiachen.myarchitecture.R;
 import com.chiachen.myarchitecture.base.BaseActivity;
 import com.chiachen.myarchitecture.ui.custom.RoundedImageView;
 
@@ -122,6 +123,7 @@ public class MainActivity extends BaseActivity {
 
                 switch (item.getItemId()) {
                     case R.id.nav_item_about: {
+                        // mPresenter.onDrawerOptionAboutClick();
                         return true;
                     }
                     case R.id.nav_item_rate_us: {
