@@ -1,26 +1,13 @@
-/*
- * Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://mindorks.com/license/apache-v2
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License
- */
-
 package com.chiachen.myarchitecture.di.module;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.chiachen.myarchitecture.di.ActivityContext;
 import com.chiachen.myarchitecture.di.PerActivity;
 import com.chiachen.myarchitecture.ui.feed.FeedPagerAdapter;
+import com.chiachen.myarchitecture.ui.feed.blogs.BlogAdapter;
 import com.chiachen.myarchitecture.ui.main.MainMvpPresenter;
 import com.chiachen.myarchitecture.ui.main.MainMvpView;
 import com.chiachen.myarchitecture.ui.main.MainPresenter;
@@ -79,5 +66,16 @@ public class ActivityModule {
     @Provides
     FeedPagerAdapter provideFeedPagerAdapter(AppCompatActivity activity) {
         return new FeedPagerAdapter(activity.getSupportFragmentManager());
+    }
+
+    // Blog fragment.
+    @Provides
+    LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {
+        return new LinearLayoutManager(activity);
+    }
+
+    @Provides
+    BlogAdapter provideBlogAdapter() {
+        return new BlogAdapter();
     }
 }
