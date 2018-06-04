@@ -18,8 +18,6 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     private Unbinder mUnbinder;
     private ProgressDialog mProgressDialog;
 
-    //==============================================================================================
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

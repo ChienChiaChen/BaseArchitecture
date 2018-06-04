@@ -11,6 +11,7 @@ import com.chiachen.myarchitecture.R;
 import com.chiachen.myarchitecture.base.BaseActivity;
 import com.chiachen.myarchitecture.fragment.left.LeftFragment;
 import com.chiachen.myarchitecture.fragment.right.RightFragment;
+import com.chiachen.myarchitecture.ui.feed.blogs.BlogFragment;
 
 import javax.inject.Inject;
 
@@ -49,9 +50,11 @@ public class FeedActivity extends BaseActivity {
         }
         mFeedPagerAdapter.addFrag(LeftFragment.newInstance(), LeftFragment.TAG);
         mFeedPagerAdapter.addFrag(RightFragment.newInstance(), RightFragment.TAG);
+        mFeedPagerAdapter.addFrag(BlogFragment.newInstance(), BlogFragment.TAG);
         mViewPager.setAdapter(mFeedPagerAdapter);
         mTabLayout.addTab(mTabLayout.newTab().setText("Left"));
         mTabLayout.addTab(mTabLayout.newTab().setText("Right"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("Blog"));
         mViewPager.setOffscreenPageLimit(mTabLayout.getTabCount());
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
