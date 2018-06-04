@@ -6,8 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.chiachen.myarchitecture.di.ActivityContext;
 import com.chiachen.myarchitecture.di.PerActivity;
+import com.chiachen.myarchitecture.ui.blog.BlogMvpPresenter;
+import com.chiachen.myarchitecture.ui.blog.BlogPresenter;
 import com.chiachen.myarchitecture.ui.feed.FeedPagerAdapter;
 import com.chiachen.myarchitecture.ui.feed.blogs.BlogAdapter;
+import com.chiachen.myarchitecture.ui.feed.blogs.BlogMvpView;
 import com.chiachen.myarchitecture.ui.main.MainMvpPresenter;
 import com.chiachen.myarchitecture.ui.main.MainMvpView;
 import com.chiachen.myarchitecture.ui.main.MainPresenter;
@@ -77,5 +80,10 @@ public class ActivityModule {
     @Provides
     BlogAdapter provideBlogAdapter() {
         return new BlogAdapter();
+    }
+
+    @Provides
+    BlogMvpPresenter<BlogMvpView> provideBlogMvpPresenter(BlogPresenter<BlogMvpView> presenter) {
+        return presenter;
     }
 }
