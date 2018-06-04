@@ -78,4 +78,7 @@ dependencies {
     compile("com.github.ihsanbal:LoggingInterceptor:${rootProject.logginInterceptor}") {
         exclude group: 'org.json', module: 'json'
     }
+
+    debugCompile "com.readystatesoftware.chuck:library:${rootProject.chuck}"
+    releaseCompile "com.readystatesoftware.chuck:library-no-op:${rootProject.chuck}"
 }
