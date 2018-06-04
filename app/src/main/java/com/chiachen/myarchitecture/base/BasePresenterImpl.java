@@ -50,7 +50,10 @@ public class BasePresenterImpl <V extends BaseView> implements BasePresenter<V>{
 
     @Override
     public void onDetach() {
-        this.mView = null;
+        if (isViewAttached()) {
+            this.mView.clear();
+            this.mView = null;
+        }
         mCompositeDisposable.dispose();
     }
 

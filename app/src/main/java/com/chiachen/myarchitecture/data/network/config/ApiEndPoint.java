@@ -6,4 +6,5 @@ public final class ApiEndPoint {
     }
 
     public static final String ENDPOINT_OPEN_SOURCE = "/v2/5926c34212000035026871cd";
+    public static final String ENDPOINT_BLOG = "/v2/5926ce9d11000096006ccb30";
 }

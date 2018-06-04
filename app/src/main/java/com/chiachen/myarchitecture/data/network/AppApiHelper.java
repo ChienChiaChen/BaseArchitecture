@@ -1,5 +1,6 @@
 package com.chiachen.myarchitecture.data.network;
 
+import com.chiachen.myarchitecture.data.network.model.BlogResponse;
 import com.chiachen.myarchitecture.data.network.model.OpenSourceResponse;
 
 import javax.inject.Inject;
@@ -18,5 +19,10 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public Single<OpenSourceResponse> getOpenSourceApiCall() {
         return mApiService.getOpenSourceApiCall();
+    }
+
+    @Override
+    public Single<BlogResponse> getBlogApiCall() {
+        return mApiService.getBlogApiCall();
     }
 }

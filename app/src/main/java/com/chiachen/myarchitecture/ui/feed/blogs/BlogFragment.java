@@ -13,8 +13,11 @@ import android.view.ViewGroup;
 
 import com.chiachen.myarchitecture.R;
 import com.chiachen.myarchitecture.base.BaseFragment;
+import com.chiachen.myarchitecture.data.network.model.BlogResponse;
 import com.chiachen.myarchitecture.di.component.ActivityComponent;
 import com.chiachen.myarchitecture.ui.blog.BlogMvpPresenter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -42,6 +45,11 @@ public class BlogFragment extends BaseFragment implements BlogMvpView {
         return new BlogFragment();
     }
 
+    @Override
+    public void updateBlog(List<BlogResponse.Blog> blogList) {
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,7 +68,6 @@ public class BlogFragment extends BaseFragment implements BlogMvpView {
 
     @Override
     protected void initUI(View view) {
-
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

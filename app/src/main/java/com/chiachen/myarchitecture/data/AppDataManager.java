@@ -3,6 +3,7 @@ package com.chiachen.myarchitecture.data;
 import com.chiachen.myarchitecture.data.db.DbHelper;
 import com.chiachen.myarchitecture.data.db.user.User;
 import com.chiachen.myarchitecture.data.network.ApiHelper;
+import com.chiachen.myarchitecture.data.network.model.BlogResponse;
 import com.chiachen.myarchitecture.data.network.model.OpenSourceResponse;
 
 import java.util.List;
@@ -47,5 +48,10 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<OpenSourceResponse> getOpenSourceApiCall() {
         return mApiHelper.getOpenSourceApiCall();
+    }
+
+    @Override
+    public Single<BlogResponse> getBlogApiCall() {
+        return mApiHelper.getBlogApiCall();
     }
 }
