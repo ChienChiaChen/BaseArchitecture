@@ -41,4 +41,5 @@ ext {
     stethoVersion = '1.5.0'
     stethoOkhttp3Version = '1.4.2'
     fakerVersion = '1.2.7'
+    logginInterceptor = '2.0.2'
 }

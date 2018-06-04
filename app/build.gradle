@@ -11,6 +11,15 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
+        buildTypes.each {
+            it.buildConfigField 'String', 'API_KEY', API_KEY
+        }
+
+        debug {
+            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/v2\"")
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -65,4 +74,8 @@ dependencies {
 
     // fake data
     implementation "com.github.blocoio:faker:${rootProject.fakerVersion}"
+
+    compile("com.github.ihsanbal:LoggingInterceptor:${rootProject.logginInterceptor}") {
+        exclude group: 'org.json', module: 'json'
+    }
 }
