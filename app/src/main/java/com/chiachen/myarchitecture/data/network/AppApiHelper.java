@@ -8,11 +8,11 @@ import io.reactivex.Single;
 
 public class AppApiHelper implements ApiHelper {
 
-    private ApiService mApiService;
+    @Inject
+    ApiService mApiService;
 
     @Inject
-    public AppApiHelper(ApiService apiService) {
-        mApiService = apiService;
+    public AppApiHelper() {
     }
 
     @Override
