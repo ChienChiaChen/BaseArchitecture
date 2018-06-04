@@ -6,6 +6,7 @@ import com.chiachen.myarchitecture.data.DataManager;
 import com.chiachen.myarchitecture.di.component.ApplicationComponent;
 import com.chiachen.myarchitecture.di.component.DaggerApplicationComponent;
 import com.chiachen.myarchitecture.di.module.ApplicationModule;
+import com.chiachen.myarchitecture.di.module.NetModule;
 import com.chiachen.myarchitecture.di.module.RoomModule;
 import com.facebook.stetho.Stetho;
 
@@ -38,6 +39,7 @@ public class MvpApp extends Application {
         mApplicationComponent = DaggerApplicationComponent.builder()
                         .applicationModule(new ApplicationModule(this))
                         .roomModule(new RoomModule(this))
+                        .netModule(new NetModule(this))
                         .build();
 
         mApplicationComponent.inject(this);

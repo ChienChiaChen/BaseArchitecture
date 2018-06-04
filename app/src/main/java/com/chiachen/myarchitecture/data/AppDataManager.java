@@ -2,6 +2,8 @@ package com.chiachen.myarchitecture.data;
 
 import com.chiachen.myarchitecture.data.db.DbHelper;
 import com.chiachen.myarchitecture.data.db.user.User;
+import com.chiachen.myarchitecture.data.network.ApiHelper;
+import com.chiachen.myarchitecture.data.network.model.OpenSourceResponse;
 
 import java.util.List;
 
@@ -9,10 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
-
-/**
- * Created by jianjiacheng on 2018/05/29.
- */
+import io.reactivex.Single;
 
 @Singleton
 public class AppDataManager implements DataManager {
@@ -21,11 +20,13 @@ public class AppDataManager implements DataManager {
     DbHelper mDbHelper;
 
     @Inject
-    public AppDataManager(DbHelper dbHelper) {
-        mDbHelper = dbHelper;
+    ApiHelper mApiHelper;
 
+    @Inject
+    public AppDataManager() {
     }
 
+    // DB
     @Override
     public void addUsers(List<User> items) {
         mDbHelper.addUsers(items);
@@ -39,5 +40,12 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<List<User>> getUsers() {
         return mDbHelper.getUsers();
+    }
+
+
+    // API
+    @Override
+    public Single<OpenSourceResponse> getOpenSourceApiCall() {
+        return mApiHelper.getOpenSourceApiCall();
     }
 }

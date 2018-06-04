@@ -1,8 +1,10 @@
 package com.chiachen.myarchitecture.data.network;
 
-/**
- * Created by jianjiacheng on 2018/05/29.
- */
+import com.chiachen.myarchitecture.data.network.model.OpenSourceResponse;
+
+import io.reactivex.Single;
+
 
 public interface ApiHelper {
+    Single<OpenSourceResponse> getOpenSourceApiCall();
 }
