@@ -1,5 +1,7 @@
 package com.chiachen.myarchitecture.data.network;
 
+import java.net.HttpURLConnection;
+
 import io.reactivex.observers.DisposableObserver;
 import retrofit2.HttpException;
 
@@ -8,9 +10,6 @@ import retrofit2.HttpException;
  */
 
 public abstract class ApiCallback<M> extends DisposableObserver<M> {
-    public static final int NETWORK_ERR = 504;
-    public static final int SERVER_ERR_1 = 502;
-    public static final int SERVER_ERR_2 = 404;
 
     public abstract void onSuccess(M model);
     public abstract void onFailure(String msg);
@@ -29,9 +28,9 @@ public abstract class ApiCallback<M> extends DisposableObserver<M> {
             int errCode = httpException.code();
             String errMsg = httpException.message();
 
-            if (NETWORK_ERR == errCode) {
-                errMsg = "Network error";
-            } else if (SERVER_ERR_1 == errCode || SERVER_ERR_2 == errCode) {
+            if (HttpURLConnection.HTTP_GATEWAY_TIMEOUT == errCode) {
+                errMsg = "timeout error";
+            } else if (HttpURLConnection.HTTP_BAD_GATEWAY == errCode || HttpURLConnection.HTTP_NOT_FOUND == errCode) {
                 errMsg = "Server error";
             }
 
