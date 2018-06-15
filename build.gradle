@@ -43,4 +43,5 @@ ext {
     fakerVersion = '1.2.7'
     logginInterceptor = '2.0.2'
     chuck = '1.1.0'
+    glideVersion = '3.7.0'
 }
