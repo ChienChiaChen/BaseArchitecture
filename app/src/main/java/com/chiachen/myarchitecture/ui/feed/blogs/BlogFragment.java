@@ -47,7 +47,7 @@ public class BlogFragment extends BaseFragment implements BlogMvpView {
 
     @Override
     public void updateBlog(List<BlogResponse.Blog> blogList) {
-
+        mBlogAdapter.addItems(blogList);
     }
 
     @Nullable

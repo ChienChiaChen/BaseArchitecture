@@ -26,8 +26,8 @@
         android:layout_margin="8dp"
         android:background="@color/white"
         android:orientation="vertical"
-        app:cardCornerRadius="7dp"
-        app:cardElevation="4dp">
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
