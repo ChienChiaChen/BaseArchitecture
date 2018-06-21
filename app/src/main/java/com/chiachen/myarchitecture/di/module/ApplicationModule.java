@@ -59,7 +59,6 @@ public class ApplicationModule {
     }
 
     @Provides
-    @Singleton
     CompositeDisposable provideCompositeDisposable() {
         return new CompositeDisposable();
     }
