@@ -5,6 +5,7 @@ import com.chiachen.myarchitecture.data.db.user.User;
 import com.chiachen.myarchitecture.data.network.ApiHelper;
 import com.chiachen.myarchitecture.data.network.model.BlogResponse;
 import com.chiachen.myarchitecture.data.network.model.OpenSourceResponse;
+import com.chiachen.myarchitecture.data.prefs.PreferencesHelper;
 
 import java.util.List;
 
@@ -22,6 +23,9 @@ public class AppDataManager implements DataManager {
 
     @Inject
     ApiHelper mApiHelper;
+
+    @Inject
+    PreferencesHelper mPreferencesHelper;
 
     @Inject
     public AppDataManager() {

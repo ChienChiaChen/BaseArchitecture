@@ -1,33 +1,33 @@
 package com.chiachen.myarchitecture.di.component;
 
-import android.app.Application;
-import android.content.Context;
-
 import com.chiachen.myarchitecture.MvpApp;
-import com.chiachen.myarchitecture.data.DataManager;
-import com.chiachen.myarchitecture.di.ApplicationContext;
 import com.chiachen.myarchitecture.di.module.ApplicationModule;
 import com.chiachen.myarchitecture.di.module.NetModule;
 import com.chiachen.myarchitecture.di.module.RoomModule;
 
 import javax.inject.Singleton;
 
+import dagger.BindsInstance;
 import dagger.Component;
+import dagger.android.AndroidInjectionModule;
+import dagger.android.AndroidInjector;
 
-@Singleton
 @Component(modules = {
+        AndroidInjectionModule.class,
         ApplicationModule.class,
+        ActivityBuilder.class,
         RoomModule.class,
         NetModule.class
 })
-public interface ApplicationComponent {
+@Singleton
+public interface ApplicationComponent extends AndroidInjector<MvpApp> {
+    @Component.Builder
+    interface Builder {
+
+        @BindsInstance
+        Builder application(MvpApp mvpApp);
+        ApplicationComponent build();
+    }
 
     void inject(MvpApp app);
-
-    @ApplicationContext
-    Context context();
-
-    Application application();
-
-    DataManager getDataManager();
 }

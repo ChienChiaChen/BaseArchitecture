@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 
 import com.chiachen.myarchitecture.R;
 import com.chiachen.myarchitecture.base.BaseFragment;
-import com.chiachen.myarchitecture.di.component.ActivityComponent;
 
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -34,11 +32,6 @@ public class FragmentPage1 extends BaseFragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_page_1, container, false);
-        ActivityComponent component = getActivityComponent();
-        if (component != null) {
-            component.inject(this);
-            setUnBinder(ButterKnife.bind(this, view));
-        }
         return view;
     }
 

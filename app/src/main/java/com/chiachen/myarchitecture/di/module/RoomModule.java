@@ -1,8 +1,8 @@
 package com.chiachen.myarchitecture.di.module;
 
-import android.app.Application;
 import android.arch.persistence.room.Room;
 
+import com.chiachen.myarchitecture.MvpApp;
 import com.chiachen.myarchitecture.data.db.AppDbHelper;
 import com.chiachen.myarchitecture.data.db.DbConfiguration;
 import com.chiachen.myarchitecture.data.db.DbHelper;
@@ -23,20 +23,14 @@ import dagger.Provides;
 @Module
 public class RoomModule {
 
-    private final Application mApplication;
-
-    public RoomModule(Application application) {
-        mApplication = application;
+    @Provides
+    @Singleton
+    LocalDB provideUserDao(MvpApp mvpApp) {
+        return Room.databaseBuilder(mvpApp.getApplicationContext(), LocalDB.class, DbConfiguration.DB_NAME).build();
     }
 
     @Provides
     @Singleton
-    LocalDB provideUserDao() {
-        return Room.databaseBuilder(mApplication.getApplicationContext(), LocalDB.class, DbConfiguration.DB_NAME).build();
-    }
-
-    @Singleton
-    @Provides
     UserDao providesProductDao(LocalDB localDB) {
         return localDB.userDao();
     }

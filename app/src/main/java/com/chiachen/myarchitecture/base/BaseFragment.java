@@ -8,7 +8,6 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.chiachen.myarchitecture.di.component.ActivityComponent;
 import com.chiachen.myarchitecture.utils.CommonUtils;
 
 import butterknife.Unbinder;
@@ -54,11 +53,6 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     }
 
     //==============================================================================================
-
-    public ActivityComponent getActivityComponent() {
-        if (null == mActivity ) return null;
-        return mActivity.getActivityComponent();
-    }
 
     public BaseActivity getBaseActivity() {
         return mActivity;

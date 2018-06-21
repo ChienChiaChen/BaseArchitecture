@@ -2,8 +2,6 @@ package com.chiachen.myarchitecture.base;
 
 import android.app.ProgressDialog;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -12,36 +10,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chiachen.myarchitecture.MvpApp;
 import com.chiachen.myarchitecture.R;
-import com.chiachen.myarchitecture.di.component.ActivityComponent;
-import com.chiachen.myarchitecture.di.component.DaggerActivityComponent;
-import com.chiachen.myarchitecture.di.module.ActivityModule;
 import com.chiachen.myarchitecture.utils.CommonUtils;
 
 import butterknife.Unbinder;
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
     private ProgressDialog mProgressDialog;
-
-    private ActivityComponent mActivityComponent;
-
-    public ActivityComponent getActivityComponent() {
-        return mActivityComponent;
-    }
-
     private Unbinder mUnBinder;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        mActivityComponent =
-                DaggerActivityComponent.builder()
-                .activityModule(new ActivityModule(this))
-                .applicationComponent(((MvpApp)getApplication()).getApplicationComponent())
-                .build();
-    }
 
     @Override
     public void showLoading() {

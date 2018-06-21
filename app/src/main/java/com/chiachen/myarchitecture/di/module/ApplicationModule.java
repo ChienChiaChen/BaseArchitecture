@@ -1,15 +1,16 @@
 package com.chiachen.myarchitecture.di.module;
 
-import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 
+import com.chiachen.myarchitecture.MvpApp;
 import com.chiachen.myarchitecture.data.AppDataManager;
 import com.chiachen.myarchitecture.data.DataManager;
 import com.chiachen.myarchitecture.data.network.ApiHelper;
 import com.chiachen.myarchitecture.data.network.AppApiHelper;
 import com.chiachen.myarchitecture.data.prefs.AppPreferencesHelper;
 import com.chiachen.myarchitecture.data.prefs.PreferencesHelper;
-import com.chiachen.myarchitecture.di.ApplicationContext;
+import com.chiachen.myarchitecture.utils.AppConstants;
 
 import javax.inject.Singleton;
 
@@ -24,27 +25,22 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
 
-    private final Application mApplication;
-
-    public ApplicationModule(Application application) {
-        mApplication = application;
-    }
-
-    @Provides
-    @ApplicationContext
-    Context provideContext() {
-        return mApplication;
-    }
-
-    @Provides
-    Application provideApplication() {
-        return mApplication;
-    }
-
     @Provides
     @Singleton
     DataManager provideDataManager(AppDataManager appDataManager) {
         return appDataManager;
+    }
+
+    @Provides
+    @Singleton
+    String providePreferenceName() {
+        return AppConstants.PREF_NAME;
+    }
+
+    @Provides
+    @Singleton
+    SharedPreferences provideSharedPreferences(MvpApp context, String prefFileName) {
+        return context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE);
     }
 
     @Provides
