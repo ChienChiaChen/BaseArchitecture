@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 
 import com.chiachen.myarchitecture.data.DataManager;
+import com.chiachen.myarchitecture.di.component.DaggerApplicationComponent;
 import com.facebook.stetho.Stetho;
 
 import javax.inject.Inject;
@@ -25,6 +26,15 @@ public class MvpApp extends Application implements HasActivityInjector {
     public void onCreate() {
         super.onCreate();
         initStetho();
+        initDagger2();
+    }
+
+    private void initDagger2() {
+        DaggerApplicationComponent
+                .builder()
+                .application(this)
+                .build()
+                .inject(this);
     }
 
     private void initStetho() {

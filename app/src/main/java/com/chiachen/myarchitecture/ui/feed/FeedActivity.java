@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
@@ -17,8 +18,18 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
 
-public class FeedActivity extends BaseActivity {
+public class FeedActivity extends BaseActivity implements HasSupportFragmentInjector {
+    @Inject
+    DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
+
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return fragmentDispatchingAndroidInjector;
+    }
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -29,8 +40,8 @@ public class FeedActivity extends BaseActivity {
     @BindView(R.id.tab_layout)
     TabLayout mTabLayout;
 
-    @Inject
-    FeedPagerAdapter mFeedPagerAdapter;
+    // TODO: 2018/6/21 Inject it
+    private FeedPagerAdapter mFeedPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +58,7 @@ public class FeedActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        mFeedPagerAdapter = new FeedPagerAdapter(getSupportFragmentManager());
         mFeedPagerAdapter.addFrag(LeftFragment.newInstance(), LeftFragment.TAG);
         mFeedPagerAdapter.addFrag(RightFragment.newInstance(), RightFragment.TAG);
         mFeedPagerAdapter.addFrag(BlogFragment.newInstance(), BlogFragment.TAG);

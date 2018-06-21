@@ -30,7 +30,6 @@ public class FeedPagerAdapter extends FragmentStatePagerAdapter {
 
     public FeedPagerAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
-
     }
 
     @Override
