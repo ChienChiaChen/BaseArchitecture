@@ -47,7 +47,6 @@ public class AppDataManager implements DataManager {
         return mDbHelper.getUsers();
     }
 
-
     // API
     @Override
     public Single<OpenSourceResponse> getOpenSourceApiCall() {

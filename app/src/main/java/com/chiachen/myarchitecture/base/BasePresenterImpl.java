@@ -26,9 +26,9 @@ public class BasePresenterImpl <V extends BaseView> implements BasePresenter<V>{
 
     public static final String TAG = "BasePresenterImpl";
 
-    private final SchedulerProvider mSchedulerProvider;
-    private final CompositeDisposable mCompositeDisposable;
-    private final DataManager mDataManager;
+    protected   SchedulerProvider mSchedulerProvider;
+    protected  CompositeDisposable mCompositeDisposable;
+    protected  DataManager mDataManager;
 
     private WeakReference<V> mView;
 

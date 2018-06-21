@@ -5,6 +5,7 @@ import com.chiachen.myarchitecture.data.DataManager;
 import com.chiachen.myarchitecture.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
+
 import io.reactivex.disposables.CompositeDisposable;
 
 public class MainPresenter<V extends MainMvpView> extends BasePresenterImpl<V>  implements MainMvpPresenter<V> {

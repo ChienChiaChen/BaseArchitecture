@@ -11,11 +11,14 @@ import com.chiachen.myarchitecture.data.network.AppApiHelper;
 import com.chiachen.myarchitecture.data.prefs.AppPreferencesHelper;
 import com.chiachen.myarchitecture.data.prefs.PreferencesHelper;
 import com.chiachen.myarchitecture.utils.AppConstants;
+import com.chiachen.myarchitecture.utils.rx.AppSchedulerProvider;
+import com.chiachen.myarchitecture.utils.rx.SchedulerProvider;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.disposables.CompositeDisposable;
 
 
 /**
@@ -53,5 +56,17 @@ public class ApplicationModule {
     @Singleton
     ApiHelper provideApiHelper(AppApiHelper appApiHelper) {
         return appApiHelper;
+    }
+
+    @Provides
+    @Singleton
+    CompositeDisposable provideCompositeDisposable() {
+        return new CompositeDisposable();
+    }
+
+    @Provides
+    @Singleton
+    SchedulerProvider providechedulerProvider(AppSchedulerProvider appSchedulerProvider) {
+        return appSchedulerProvider;
     }
 }

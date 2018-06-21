@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.chiachen.myarchitecture.ui.main.MainActivity;
 import com.chiachen.myarchitecture.R;
 import com.chiachen.myarchitecture.base.BaseActivity;
+import com.chiachen.myarchitecture.ui.main.MainActivity;
 
 import javax.inject.Inject;
 
