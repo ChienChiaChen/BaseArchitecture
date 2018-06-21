@@ -29,7 +29,7 @@ task clean(type: Delete) {
 // Define versions in a single place
 ext {
 
-    dagger2Version = '2.8'
+    dagger2Version = '2.13'
     rxjava2Version = '2.0.6'
     rxandroidVersion = '2.0.1'
     butterKnifeVersion = '8.6.0'

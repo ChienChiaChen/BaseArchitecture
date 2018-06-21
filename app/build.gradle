@@ -45,6 +45,8 @@ dependencies {
     // dependency injection
     implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:${rootProject.dagger2Version}"// dagger-android
+    annotationProcessor "com.google.dagger:dagger-android-processor:${rootProject.dagger2Version}"
     compileOnly 'javax.annotation:jsr250-api:1.0'
     implementation 'javax.inject:javax.inject:1'
 
