@@ -1,5 +1,7 @@
 package com.chiachen.myarchitecture.di.component;
 
+import android.content.Context;
+
 import com.chiachen.myarchitecture.MvpApp;
 import com.chiachen.myarchitecture.di.module.ApplicationModule;
 import com.chiachen.myarchitecture.di.module.NetModule;
@@ -25,9 +27,9 @@ public interface ApplicationComponent extends AndroidInjector<MvpApp> {
     interface Builder {
 
         @BindsInstance
-        Builder application(MvpApp mvpApp);
+        Builder application(Context context);
         ApplicationComponent build();
     }
 
-    void inject(MvpApp app);
+    void inject(Context context);
 }

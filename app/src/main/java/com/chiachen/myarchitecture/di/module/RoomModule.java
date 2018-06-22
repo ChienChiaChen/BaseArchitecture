@@ -1,8 +1,8 @@
 package com.chiachen.myarchitecture.di.module;
 
 import android.arch.persistence.room.Room;
+import android.content.Context;
 
-import com.chiachen.myarchitecture.MvpApp;
 import com.chiachen.myarchitecture.data.db.AppDbHelper;
 import com.chiachen.myarchitecture.data.db.DbConfiguration;
 import com.chiachen.myarchitecture.data.db.DbHelper;
@@ -25,8 +25,8 @@ public class RoomModule {
 
     @Provides
     @Singleton
-    LocalDB provideUserDao(MvpApp mvpApp) {
-        return Room.databaseBuilder(mvpApp.getApplicationContext(), LocalDB.class, DbConfiguration.DB_NAME).build();
+    LocalDB provideUserDao(Context context) {
+        return Room.databaseBuilder(context.getApplicationContext(), LocalDB.class, DbConfiguration.DB_NAME).build();
     }
 
     @Provides

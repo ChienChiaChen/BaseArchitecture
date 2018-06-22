@@ -5,7 +5,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.chiachen.myarchitecture.BuildConfig;
-import com.chiachen.myarchitecture.MvpApp;
 import com.chiachen.myarchitecture.data.network.ApiService;
 import com.chiachen.myarchitecture.data.network.config.HttpConfig;
 import com.chiachen.myarchitecture.data.network.exception.NoNetworkException;
@@ -31,9 +30,9 @@ public class NetModule {
 
     @Provides
     @Singleton
-    public boolean IsNetworkConnected(MvpApp mvpApp) {
+    public boolean IsNetworkConnected(Context context) {
         try {
-            ConnectivityManager cm = (ConnectivityManager) mvpApp.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            ConnectivityManager cm = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activityNetwork = cm.getActiveNetworkInfo();
             return activityNetwork != null && activityNetwork.isConnectedOrConnecting();
         } catch (Exception e) {
@@ -43,11 +42,11 @@ public class NetModule {
 
     @Provides
     @Singleton
-    public Interceptor provideNetworkCheckerInterceptor(final MvpApp mvpApp) {
+    public Interceptor provideNetworkCheckerInterceptor(final Context context) {
         return new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
-                if (IsNetworkConnected(mvpApp)) {
+                if (IsNetworkConnected(context)) {
                     return chain.proceed(chain.request());
                 } else {
                     throw new NoNetworkException();
@@ -58,11 +57,11 @@ public class NetModule {
 
     @Provides
     @Singleton
-    public OkHttpClient provideOkHttpClient(MvpApp mvpApp,Interceptor networkInterceptor) {
+    public OkHttpClient provideOkHttpClient(Context context,Interceptor networkInterceptor) {
         return new OkHttpClient.Builder()
                 .addInterceptor(InterceptorUtil.getLoggingInterceptor())
                 .addInterceptor(networkInterceptor)
-                .addInterceptor(new ChuckInterceptor(mvpApp))
+                .addInterceptor(new ChuckInterceptor(context))
                 .addNetworkInterceptor(InterceptorUtil.getStethoInterceptor())
                 .retryOnConnectionFailure(HttpConfig.NEED_TO_RETRY)
                 .writeTimeout(HttpConfig.DEFAULT_TIMEOUT, TimeUnit.SECONDS)

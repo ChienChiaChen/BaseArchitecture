@@ -3,7 +3,6 @@ package com.chiachen.myarchitecture.di.module;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.chiachen.myarchitecture.MvpApp;
 import com.chiachen.myarchitecture.data.AppDataManager;
 import com.chiachen.myarchitecture.data.DataManager;
 import com.chiachen.myarchitecture.data.network.ApiHelper;
@@ -42,7 +41,7 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    SharedPreferences provideSharedPreferences(MvpApp context, String prefFileName) {
+    SharedPreferences provideSharedPreferences(Context context, String prefFileName) {
         return context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE);
     }
 
